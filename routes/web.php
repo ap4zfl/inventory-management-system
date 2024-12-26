@@ -70,7 +70,29 @@ Route::get('/order/{id}', [OrderController::class, 'viewOrderDetails'])->name('o
 
 });
 
+// Adviser Routes
+Route::group(['middleware' => ['adviserrestrictons']], function () {
+    // Route::view('adviser-dashboard','adviser.dashboard');
+    Route::get('/adviser-dashboard', [dashboardController::class, 'adviserdashboard'])->name('adviser.dashboard');
+    Route::view('product','adviser.product');
+    Route::get('/view-products-adviser', [ProductController::class, 'viewProducts']);
+    Route::post('/update-stack-comment', [ProductController::class, 'updateStackComment']);
+    Route::post('/add-to-cart', [ProductController::class, 'addToCart']);
+    Route::view('/checkout-cart', 'adviser.checkout');
+    Route::get('/checkout', [ProductController::class, 'checkout'])->name('checkout');
+    Route::post('/remove-from-cart', [ProductController::class, 'removeFromCart']);
+    Route::post('/place-order', [OrderController::class, 'placeOrder']);
 
+});
+
+
+// frontend cart 
+Route::post('/add-to-cart-front', [HomeController::class, 'addToCart'])->name('addToCart');
+Route::get('/get-cart', [HomeController::class, 'getCart'])->name('getCart');
+Route::view('/checkout-cart-data', 'checkout-cart');
+Route::get('/checkout-front', [HomeController::class, 'checkout'])->name('checkout');
+Route::post('/remove-from-cart-front', [HomeController::class, 'removeFromCart']);
+Route::post('/place-order-front', [OrderController::class, 'placeOrderfront']);
 
 
 

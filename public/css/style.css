@@ -1,0 +1,88 @@
+.aboutbanner{
+    background-image: url('../my-images/11.jpg');
+}
+.faqbanner{
+    background-image: url('../my-images/22.jpg');
+}
+.contactbanner{
+    background-image: url('../my-images/33.jpg');
+}
+.shoptbanner{
+    background-image: url('../my-images/44.jpg');
+}
+.bannerstyle{
+    background-repeat: no-repeat;
+    padding: 300px 0;
+    background-attachment: fixed;
+    background-size: 100%;
+    position: relative;
+}
+
+.bannerstyle::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+.bannerstyle h2{
+    z-index: 9999999999;
+}
+.bannerstyle a{
+    color: #FFC43F;
+    text-decoration: none;
+}
+.currenttext{
+    color: #fff;
+}
+.bannerstyle:hover::before {
+    opacity: .6; 
+}
+.lboxshadow{
+    box-shadow:  #FFC43F -25px 25px;
+}
+.rboxshadow{
+    box-shadow:  #FFC43F 25px 25px;
+}
+.astopm{
+    margin-top: 10rem;
+}
+.ash2 .row{
+    align-items: center;
+}
+
+.cform{
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+  padding: 2rem;
+  border-radius: 5px;
+}
+.cform .form-control{
+    border-color:  #FFC43F !important;
+}
+.form-control:focus{
+    box-shadow: none !important;
+}
+
+@media only screen and (min-width:0px) and (max-width:767px){
+    .lboxshadow{
+        box-shadow: none;
+    }
+    .rboxshadow{
+        box-shadow: none;
+    }
+    .astopm{
+        margin-top: 0;
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    .ash2 h2{
+        margin-top: 1rem;
+    }
+    .clocation{
+        margin-top: 2rem;
+    }
+}
