@@ -94,6 +94,35 @@ Route::get('/checkout-front', [HomeController::class, 'checkout'])->name('checko
 Route::post('/remove-from-cart-front', [HomeController::class, 'removeFromCart']);
 Route::post('/place-order-front', [OrderController::class, 'placeOrderfront']);
 
+// Manager Routes
+Route::group(['middleware' => ['managerrestrictions']], function () {
+    Route::get('/manager-dashboard', [dashboardController::class, 'managerdashboard'])->name('manager.dashboard');
+    Route::get('manager-products',[ProductController::class,'openProducts']);
+    Route::get('/view-products', [ProductController::class, 'viewProducts']);
+    Route::post('/add-product', [ProductController::class, 'addProduct']);
+    Route::post('/edit-product', [ProductController::class, 'editProduct']);
+    Route::post('/delete-product', [ProductController::class, 'deleteProduct']);
+    Route::get('/view-product-commentmanager/{id}', [ProductController::class, 'viewProductComment']);
+    Route::post('/update-stock', [ProductController::class, 'updateStock']);
+
+    Route::view('category','manager.category');
+    Route::get('/view-category', [categoryController::class, 'viewcategory']);
+    Route::post('/add-category', [categoryController::class, 'addcategory']);
+    Route::post('/edit-category', [categoryController::class, 'editcategory']);
+    Route::post('/delete-category', [categoryController::class, 'deletecategory']);
+});
+
+// User Route
+Route::view('/about','about');
+Route::view('/faqs','faqs');
+Route::view('/contact','contact');
+// Route::view('/shop','shop');
+Route::get('/shop', [HomeController::class, 'shop']);
+Route::get('/fetch-shop-products', [HomeController::class, 'fetchshopProducts']);
+Route::post('/search-products', [HomeController::class, 'searchProducts']);
+Route::get('product/{slug}', [HomeController::class, 'productdetail'])->name('product.show');
+Route::get('/category/{slug}', [HomeController::class, 'showcateProducts'])->name('category.products');
+
 
 
 
